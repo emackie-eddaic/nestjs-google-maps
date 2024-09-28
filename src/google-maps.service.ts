@@ -1,5 +1,6 @@
 import {
   Client,
+  GeocodeResult,
   GeolocateResponseData,
   Place,
   RequestParams,
@@ -50,12 +51,27 @@ export class GoogleMapsService {
     return data.result;
   }
 
-  async reverseGeocode(params: ReverseGeocodeParams): Promise<Place> {
+  async reverseGeocode(params: ReverseGeocodeParams): Promise<GeocodeResult[]> {
     const { data } = await this.client.reverseGeocode({
       params: { ...this.params, ...params },
     });
-    if (data.results.length > 0) {
-      return this.placeDetails({ place_id: data.results[0].place_id });
+    return data.results;
+  }
+
+  /**
+   * Convenience function that gets place details from first result
+   * of reverse geocode request.
+   *
+   * **WARNING**: Calling this function calls two Google Map APIs
+   * and the key will be billed accordingly.
+   * @throws Error if no results are returned
+   * @param params
+   * @returns
+   */
+  async reverseGeocodeAsPlace(params: ReverseGeocodeParams): Promise<Place> {
+    const results = await this.reverseGeocode(params);
+    if (results.length > 0) {
+      return this.placeDetails({ place_id: results[0].place_id });
     } else {
       throw new Error('No places returned');
     }

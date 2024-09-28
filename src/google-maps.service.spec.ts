@@ -39,23 +39,33 @@ describe('GoogleMapsService', () => {
   });
 
   describe('reverseGeocode', () => {
+    it('should return GoogleMapService.reverseGeocode.data.results', async () => {
+      const spy = jest
+        .spyOn(service.client, 'reverseGeocode')
+        .mockResolvedValue({ data: { results: [] } } as never);
+      expect(await service.reverseGeocode({ place_id: 'test' })).toEqual([]);
+      expect(spy).toHaveBeenCalled();
+    });
+  });
+
+  describe('reverseGeocodeAsPlace', () => {
     it('should return GoogleMapService.placeDetails from result', async () => {
       const reverseGeocodeSpy = jest
-        .spyOn(service.client, 'reverseGeocode')
-        .mockResolvedValue({ data: { results: ['test'] } } as never);
+        .spyOn(service, 'reverseGeocode')
+        .mockResolvedValue({ results: ['test'] } as never);
       const placeDetailsSpy = jest
         .spyOn(service, 'placeDetails')
         .mockResolvedValue('test' as never);
-      expect(await service.reverseGeocode({})).toEqual('test');
+      expect(await service.reverseGeocodeAsPlace({})).toEqual('test');
       expect(reverseGeocodeSpy).toHaveBeenCalled();
       expect(placeDetailsSpy).toHaveBeenCalled();
     });
 
     it('should throw error if no results', async () => {
       const reverseGeocodeSpy = jest
-        .spyOn(service.client, 'reverseGeocode')
-        .mockResolvedValue({ data: { results: [] } } as never);
-      await expect(service.reverseGeocode({})).rejects.toThrow(Error);
+        .spyOn(service, 'reverseGeocode')
+        .mockResolvedValue({ results: [] } as never);
+      await expect(service.reverseGeocodeAsPlace({})).rejects.toThrow(Error);
       expect(reverseGeocodeSpy).toHaveBeenCalled();
     });
   });
