@@ -64,7 +64,7 @@ export class GoogleMapsService {
    *
    * **WARNING**: Calling this function calls two Google Map APIs
    * and the key will be billed accordingly.
-   * @throws Error if no results are returned
+   * @throws Error if no results are returned from reverse geocode request
    * @param params
    * @returns
    */
