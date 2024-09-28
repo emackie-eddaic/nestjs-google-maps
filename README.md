@@ -39,7 +39,7 @@ import { GoogleMapsService } from '@eddaic/nestjs-google-maps';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class MyService {
+export class AppService {
   constructor(private readonly maps: GoogleMapsService) {}
 
   helloWorld() {
@@ -48,8 +48,9 @@ export class MyService {
     const placeDetails = await this.maps.placeDetails({ place_id });
 
     // Otherwise can access the client directly for full set of APIs
-    const request = {};
-    const response = await this.maps.client.nearestRoads(request);
+    const { key } = this.maps.params;
+    const params = { key, points: [] };
+    const response = await this.maps.client.nearestRoads({ params });
   }
 }
 ```
