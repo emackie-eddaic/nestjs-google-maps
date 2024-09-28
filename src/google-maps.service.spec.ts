@@ -52,7 +52,7 @@ describe('GoogleMapsService', () => {
     it('should return GoogleMapService.placeDetails from result', async () => {
       const reverseGeocodeSpy = jest
         .spyOn(service, 'reverseGeocode')
-        .mockResolvedValue({ results: ['test'] } as never);
+        .mockResolvedValue(['test'] as never);
       const placeDetailsSpy = jest
         .spyOn(service, 'placeDetails')
         .mockResolvedValue('test' as never);
