@@ -69,4 +69,19 @@ describe('GoogleMapsService', () => {
       expect(reverseGeocodeSpy).toHaveBeenCalled();
     });
   });
+
+  describe('timezone', () => {
+    it('should return GoogleMapService.client.timezone.data', async () => {
+      const spy = jest
+        .spyOn(service.client, 'timezone')
+        .mockResolvedValue({ data: 'test' } as never);
+      expect(
+        await service.timezone({
+          location: { lat: 0, lng: 0 },
+          timestamp: new Date(),
+        }),
+      ).toEqual('test');
+      expect(spy).toHaveBeenCalled();
+    });
+  });
 });

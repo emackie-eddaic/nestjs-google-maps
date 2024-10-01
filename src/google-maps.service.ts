@@ -4,6 +4,7 @@ import {
   GeolocateResponseData,
   Place,
   RequestParams,
+  TimeZoneResponseData,
 } from '@googlemaps/google-maps-services-js';
 import { Inject, Injectable } from '@nestjs/common';
 import { MODULE_OPTIONS_TOKEN } from './google-maps.module-definition';
@@ -12,6 +13,7 @@ import {
   GoogleMapsConfiguration,
   PlaceDetailsRequestParams,
   ReverseGeocodeParams,
+  TimezoneParams,
 } from './type';
 
 /**
@@ -75,5 +77,12 @@ export class GoogleMapsService {
     } else {
       throw new Error('No places returned');
     }
+  }
+
+  async timezone(params: TimezoneParams): Promise<TimeZoneResponseData> {
+    const { data } = await this.client.timezone({
+      params: { ...this.params, ...params },
+    });
+    return data;
   }
 }
