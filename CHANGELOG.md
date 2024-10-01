@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/emackie-eddaic/nestjs-google-maps/compare/v2.0.0...v2.1.0) (2024-10-01)
+
+
+### Features
+
+* add `timezone` convenience function ([#6](https://github.com/emackie-eddaic/nestjs-google-maps/issues/6)) ([2c53dca](https://github.com/emackie-eddaic/nestjs-google-maps/commit/2c53dca769973a58a682c86159df0ffa957ed8e4))
+
 ## [2.0.0](https://github.com/emackie-eddaic/nestjs-google-maps/compare/v1.0.0...v2.0.0) (2024-09-28)
 
 
