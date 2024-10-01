@@ -23,10 +23,7 @@ export default [
       'eslint.config.mjs',
     ],
   },
-  ...compat.extends(
-    'plugin:@typescript-eslint/recommended',
-    'prettier',
-  ),
+  ...compat.extends('plugin:@typescript-eslint/recommended', 'prettier'),
   {
     plugins: {
       '@typescript-eslint': typescriptEslintEslintPlugin,
