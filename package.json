@@ -1,6 +1,6 @@
 {
   "name": "@eddaic/nestjs-google-maps",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "NestJS Module for Google Maps APIs.",
   "main": "index.js",
   "author": "Eric Mackie <eric.mackie@essolutions.ca>",
