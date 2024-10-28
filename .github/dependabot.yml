@@ -9,7 +9,7 @@ updates:
     # Workflow files stored in the default location of `.github/workflows`. (You don't need to specify `/.github/workflows` for `directory`. You can use `directory: "/"`.)
     directory: '/'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
     assignees:
       - 'emackie-eddaic'
     reviewers:
@@ -17,7 +17,7 @@ updates:
   - package-ecosystem: 'npm' # See documentation for possible values
     directory: '/' # Location of package manifests
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
     assignees:
       - 'emackie-eddaic'
     reviewers:
@@ -29,8 +29,7 @@ updates:
     ignore:
       # For all packages, ignore all patch and major updates
       - dependency-name: '*'
-        update-types:
-          ['version-update:semver-major']
+        update-types: ['version-update:semver-major']
     groups:
       jest:
         patterns:
