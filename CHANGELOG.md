@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.0](https://github.com/emackie-eddaic/nestjs-google-maps/compare/v2.3.0...v2.4.0) (2024-12-01)
+
+
+### Features
+
+* **deps:** bump the nestjs group with 2 updates ([#20](https://github.com/emackie-eddaic/nestjs-google-maps/issues/20)) ([6479d6c](https://github.com/emackie-eddaic/nestjs-google-maps/commit/6479d6c7ef46b3f769c4987cb0d19440d670175d))
+
 ## [2.3.0](https://github.com/emackie-eddaic/nestjs-google-maps/compare/v2.2.0...v2.3.0) (2024-11-04)
 
 
